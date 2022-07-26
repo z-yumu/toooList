@@ -2,7 +2,7 @@ import { ITodoData } from "./js/typing";
 import TodoEvent from "./js/TodoEvent";
 
 // 立即执行函数 (doc document 这里的doc和docment，还有开头的分号???)
-((doc) => {
+;((doc) => {
   // console.log(doc,'===========>外层括号传进来的参数');
   // !(后面的叹号)类型排除空
   const oInput: HTMLInputElement  = document.querySelector("input")!
@@ -26,6 +26,8 @@ import TodoEvent from "./js/TodoEvent";
       completed: true,
     },
   ];
+
+  // document.createDocumentFragment()是用来创建一个虚拟的节点对象
 
   const todoEvent: TodoEvent = new TodoEvent(todoData,todoList);
 

@@ -1,0 +1,15 @@
+{
+  "dependencies": {
+    "vite": "^3.0.2"
+  },
+  "name": "js-ts",
+  "version": "1.0.0",
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts": {
+    "dev": "vite"
+  },
+  "author": "z-yumu",
+  "license": "ISC",
+  "description": ""
+}

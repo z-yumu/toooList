@@ -4,10 +4,10 @@ import TodoEvent from "./js/TodoEvent";
 // 立即执行函数 (doc document 这里的doc和docment，还有开头的分号???)
 ((doc) => {
   // console.log(doc,'===========>外层括号传进来的参数');
-
-  const oInput: HTMLInputElement = document.querySelector("input");
-  const oButton: HTMLButtonElement= document.querySelector("button");
-  const todoList: HTMLElement = document.querySelector(".list");
+  // !(后面的叹号)类型排除空
+  const oInput: HTMLInputElement  = document.querySelector("input")!
+  const oButton: HTMLButtonElement= document.querySelector("button")!
+  const todoList: HTMLElement = document.querySelector(".list")!
 
   const todoData: Array<ITodoData> = [
     {
@@ -32,11 +32,10 @@ import TodoEvent from "./js/TodoEvent";
   const init = (): void => {
     bindEvent();
   };
-
+    // 事件代理
   function bindEvent(): void {
     // 第三个参数 false - 事件在冒泡阶段执行，默认是false
     oButton.addEventListener("click", handleBtnClick, false);
-    // 事件代理
     todoList.addEventListener("click", handleListClick, false);
   }
 
@@ -49,31 +48,32 @@ import TodoEvent from "./js/TodoEvent";
         completed: false,
       });
 
+    // 这里是引用，所以当TodoEvent的todoData改变时，这里的todoData也改变了
+    // console.log(todoData);
+
       if(res && res === 1001){
         alert('已存在')
       }
     }
-    // todoEvent.addTodo(<ITodoData>{
-    //   id: 4,
-    //   content: "9527",
-    //   completed: true,
-    // });
-    // 这里是引用，所以当TodoEvent的todoData改变时，这里的todoData也改变了
-    // console.log(todoData);
+
   }
 
   function handleListClick(e: MouseEvent): void {
-    const tar = e.target as HTMLElement;
-    const tarName = tar.tagName;
-    
+    const tar = e.target as HTMLInputElement;
+    const tarName= tar.tagName
     switch (tarName) {
-      case "input":
+      case "INPUT":
+      todoEvent.changeCompleted(tar,tar?.checked)
         break;
-      case "button":
+      case "BUTTON":
+      // 删除
+      todoEvent.removeTodo(tar,Number(tar?.dataset.id))
         break;
       default:
         break;
     }
   }
-  init();
+  
+  init()
+
 })(document);

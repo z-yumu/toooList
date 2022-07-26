@@ -25,8 +25,8 @@ export default class TodoDom extends TodoTemplate{
 
 
     public changeCompleted(target:HTMLElement,completed:boolean){
-        const oParentNode:HTMLElement | undefined = findParentNode(target,'todo-item')
-        const oContent:HTMLElement | undefined = oParentNode?.getElementsByTagName('span')[0]
+        const oParentNode:HTMLElement  = findParentNode(target,'todo-item')!
+        const oContent:HTMLElement  = oParentNode?.getElementsByTagName('span')[0]
         oContent.style.textDecoration = completed ? 'line-through' : 'none'
     }
 }

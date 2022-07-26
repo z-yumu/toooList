@@ -59,11 +59,11 @@ import TodoEvent from "./js/TodoEvent";
   }
 
   function handleListClick(e: MouseEvent): void {
-    const tar = e.target as HTMLInputElement;
+    const tar = e.target as HTMLElement;
     const tarName= tar.tagName
     switch (tarName) {
       case "INPUT":
-      todoEvent.changeCompleted(tar,tar?.checked)
+      todoEvent.changeCompleted(tar,(tar as HTMLInputElement)?.checked)
         break;
       case "BUTTON":
       // 删除
@@ -73,7 +73,7 @@ import TodoEvent from "./js/TodoEvent";
         break;
     }
   }
-  
+
   init()
 
 })(document);

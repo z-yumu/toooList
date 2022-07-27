@@ -10,21 +10,21 @@ import TodoEvent from "./js/TodoEvent";
   const todoList: HTMLElement = document.querySelector(".list")!
 
   const todoData: Array<ITodoData> = [
-    {
-      id: 1,
-      content: "111",
-      completed: false,
-    },
-    {
-      id: 2,
-      content: "222",
-      completed: false,
-    },
-    {
-      id: 1,
-      content: "333",
-      completed: true,
-    },
+    // {
+    //   id: 1,
+    //   content: "111",
+    //   completed: false,
+    // },
+    // {
+    //   id: 2,
+    //   content: "222",
+    //   completed: false,
+    // },
+    // {
+    //   id: 1,
+    //   content: "333",
+    //   completed: true,
+    // },
   ];
 
   // document.createDocumentFragment()是用来创建一个虚拟的节点对象

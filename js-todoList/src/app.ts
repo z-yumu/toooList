@@ -1,7 +1,7 @@
 import { ITodoData } from "./js/typing";
 import TodoEvent from "./js/TodoEvent";
 
-// 立即执行函数 (doc document 这里的doc和docment，还有开头的分号???)
+// 立即执行函数
 ;((doc) => {
   // console.log(doc,'===========>外层括号传进来的参数');
   // !(后面的叹号)类型排除空

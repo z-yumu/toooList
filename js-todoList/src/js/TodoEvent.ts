@@ -1,4 +1,5 @@
 import TodoDom from "./TodoDom";
+import { getTodoList } from "./TodoService";
 import { ITodoData } from "./typing";
 
 
@@ -7,7 +8,17 @@ class TodoEvent extends TodoDom {
 
   constructor(todoData: ITodoData[],todoWrapper:HTMLElement) {
     super(todoWrapper)
-    this.todoData = todoData;
+    this.todoData = todoData
+    this.init(todoData)
+
+  }
+
+  // 装饰器
+  @getTodoList
+  private init(todoData:ITodoData[]){
+    console.log(this,'===========>this');
+    this.todoData = todoData
+    // this.initList()
   }
 
   addTodo(todo: ITodoData): number  {

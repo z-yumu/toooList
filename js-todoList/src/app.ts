@@ -9,23 +9,7 @@ import TodoEvent from "./js/TodoEvent";
   const oButton: HTMLButtonElement= document.querySelector("button")!
   const todoList: HTMLElement = document.querySelector(".list")!
 
-  const todoData: Array<ITodoData> = [
-    {
-      id: 1,
-      content: "111",
-      completed: false,
-    },
-    {
-      id: 2,
-      content: "222",
-      completed: false,
-    },
-    {
-      id: 1,
-      content: "333",
-      completed: true,
-    },
-  ];
+  const todoData: Array<ITodoData> = []
 
   // document.createDocumentFragment()是用来创建一个虚拟的节点对象
 
@@ -45,7 +29,7 @@ import TodoEvent from "./js/TodoEvent";
     const val:string = oInput.value.trim()
     if(val.length){
       const res = todoEvent.addTodo(<ITodoData>{
-        id: 4,
+        id: new Date().getTime(),
         content:val,
         completed: false,
       });

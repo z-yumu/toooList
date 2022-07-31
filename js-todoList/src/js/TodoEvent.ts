@@ -16,7 +16,7 @@ class TodoEvent extends TodoDom {
   // 装饰器
   @getTodoList
   private init(todoData:ITodoData[]){
-    console.log(this,'===========>this');
+    // console.log(this,'===========>this');
     this.todoData = todoData
     // this.initList()
   }

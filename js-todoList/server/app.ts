@@ -1,6 +1,7 @@
 import express,{Application} from 'express'
 import bodyParse  from 'body-parser'
 import {fileOperation, readFile} from './utils'
+import {ITodoData} from "../src/js/typing";
 
 const app:Application = express()
 // body 的urlencoded字符，只支持uft-8的编码的字符.返回的对象是一个键值对，当extended 为false的时候，键值对中的值就为'String'或'Array'形式，
@@ -23,11 +24,17 @@ app.get('/todoList',(req,rep)=>{
 app.post('/toggleTodo',(req,rep)=>{})
 
 app.post('/removeTodo',(req,rep)=>{
-    let id = req.body.id
+    // Number 和 parseInt 区别
+    let id = parseInt(req.body.id)
+
+    fileOperation('todo.json',(todoData:ITodoData[])=>{
+        // filter不会改变原数组
+        return todoData.filter((item:ITodoData) => item.id !== id)
+    })
 
     rep.send({
-        code:'200',
-        message:'删除成功'
+        code:200,
+        message:'删除成功',
     })
 
 })

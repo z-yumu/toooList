@@ -38,8 +38,9 @@ class TodoEvent extends TodoDom {
   @removeTodoDec
   removeTodo(target:HTMLElement,id:number):void {
     // filter不会改变原数组
-    this.todoData = this.todoData.filter((item:ITodoData)=> item.id !== id  )
-    this.removeItem(target)
+    // this.todoData = this.todoData.filter((item:ITodoData)=> item.id !== id  )
+    // this.removeItem(target)
+
   }
 
   toggleComplete(target:HTMLElement,id:number) {

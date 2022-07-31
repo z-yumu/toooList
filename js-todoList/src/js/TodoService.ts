@@ -35,7 +35,7 @@ export function getTodoList(target:any,methodName:string,description:PropertyDes
 export function  removeTodoDec(target:any,methodName:string,description:PropertyDescriptor):void{
     const _origin = description.value
     description.value = function (target:HTMLElement,id:number){
-        $.post('http://localhost:9000/removeTodo',(res:IResponse)=>{
+        $.post('http://localhost:9000/removeTodo',{ id },(res:IResponse)=>{
                 _origin.call(this,target,id)
                 if(res.code !== Code.Success){
                     alert("删除失败");

@@ -1,3 +1,5 @@
 export enum Code {
-    Success = 200
+    Exist = 100,
+    Success = 200,
+
 }

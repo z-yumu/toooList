@@ -25,7 +25,7 @@ export function fileOperation(path:string,fn?:any):void | string{
     }
 
     todoList = fn(todoList)
-    console.log(todoList,'todoList')
+    // console.log(todoList,'todoList')
     writeFile<ITodoData[]>('todo.json',todoList)
 
 }

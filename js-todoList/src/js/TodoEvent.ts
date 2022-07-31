@@ -1,5 +1,5 @@
 import TodoDom from "./TodoDom";
-import {getTodoList, removeTodoDec} from "./TodoService";
+import {addTodoDec, getTodoList, removeTodoDec, toggleCompleteDec} from "./TodoService";
 import { ITodoData } from "./typing";
 
 
@@ -21,6 +21,7 @@ class TodoEvent extends TodoDom {
     this.initList(todoData)
   }
 
+  @addTodoDec
   addTodo(todo: ITodoData): number  {
     const _todo: null | ITodoData | undefined = this.todoData.find(
       (item: ITodoData) => item.content === todo.content
@@ -40,14 +41,18 @@ class TodoEvent extends TodoDom {
     // filter不会改变原数组
     // this.todoData = this.todoData.filter((item:ITodoData)=> item.id !== id  )
     // this.removeItem(target)
+    // let todoData:Array<ITodoData> = []
+    // this.init(todoData)
+    location.reload()
 
   }
 
+  @toggleCompleteDec
   toggleComplete(target:HTMLElement,id:number) {
     // map 返回一个新数组
     this.todoData = this.todoData.map((item:ITodoData)=>{
       if(id === item.id){
-        item.completed =  !item.completed 
+        item.completed =  !item.completed
         this.changeCompleted(target,item.completed)
       }
       return item

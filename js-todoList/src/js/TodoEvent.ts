@@ -22,18 +22,19 @@ class TodoEvent extends TodoDom {
   }
 
   @addTodoDec
-  addTodo(todo: ITodoData): number  {
-    const _todo: null | ITodoData | undefined = this.todoData.find(
-      (item: ITodoData) => item.content === todo.content
-    );
-
-    if (!_todo) {
-        this.todoData.push(todo)
-        this.addItem(todo)
-        return 200
-    }
+  addTodo(todo: ITodoData): void  {
+    // const _todo: null | ITodoData | undefined = this.todoData.find(
+    //   (item: ITodoData) => item.content === todo.content
+    // );
+    //
+    // if (!_todo) {
+    //     this.todoData.push(todo)
+    //     this.addItem(todo)
+    //     return 200
+    // }
     // 已存在
-    return 1001
+    // return 1001
+    location.reload()
   }
 
   @removeTodoDec

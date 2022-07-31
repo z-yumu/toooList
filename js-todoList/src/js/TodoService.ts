@@ -65,7 +65,7 @@ export  function addTodoDec(target:any,methodName:string,description:PropertyDes
     const _origin = description.value
     description.value = function (todo: ITodoData){
         // IResponse
-        $.post('http://localhost:9000/addTodo',{ ...todo },(res:IResponse<null>)=>{
+        $.post('http://localhost:9000/addTodo',{ todo:JSON.stringify(todo) },(res:IResponse<null>)=>{
             _origin.call(this,todo)
             if(res.code === Code.Exist){
                 alert("已存在");

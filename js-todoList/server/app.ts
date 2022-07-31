@@ -62,14 +62,10 @@ app.post('/removeTodo',(req,rep)=>{
 })
 
 app.post('/addTodo',(req,rep)=>{
-    // console.log(req.body,'req')
-    req.body.id = parseInt(req.body.id)
-    req.body.completed = Boolean(req.body.completed)
-    const body:ITodoData = req.body
-    let content:string = req.body.content
+    const bodyTodo:ITodoData = JSON.parse(req.body.todo)
     fileOperation('todo.json',(todoData:ITodoData[])=>{
         // filter不会改变原数组
-        const todo:ITodoData =  todoData.find((item:ITodoData) => item.content === content)
+        const todo:ITodoData =  todoData.find((item:ITodoData) => item.content === bodyTodo.content)
         console.log(todo,'todo')
         if(todo){
             rep.send({
@@ -79,7 +75,7 @@ app.post('/addTodo',(req,rep)=>{
             return
         }
 
-        todoData.push(body)
+        todoData.push(bodyTodo)
         rep.send({
             code:200,
             message:'新增成功'

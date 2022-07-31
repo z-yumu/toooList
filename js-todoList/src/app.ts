@@ -37,9 +37,9 @@ import TodoEvent from "./js/TodoEvent";
     // 这里是引用，所以当TodoEvent的todoData改变时，这里的todoData也改变了
     // console.log(todoData);
 
-      if(res && res === 1001){
-        alert('已存在')
-      }
+      // if(res && res === 1001){
+      //   alert('已存在')
+      // }
     }
 
   }

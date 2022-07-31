@@ -11,7 +11,7 @@ import TodoEvent from "./js/TodoEvent";
 
   const todoData: Array<ITodoData> = []
 
-  // document.createDocumentFragment()是用来创建一个虚拟的节点对象
+
 
   const todoEvent: TodoEvent = new TodoEvent(todoData,todoList);
 
@@ -49,7 +49,7 @@ import TodoEvent from "./js/TodoEvent";
     const tarName= tar.tagName
     switch (tarName) {
       case "INPUT":
-      todoEvent.changeCompleted(tar,(tar as HTMLInputElement)?.checked)
+      todoEvent.toggleComplete(tar,Number(tar?.dataset.id))
         break;
       case "BUTTON":
       // 删除

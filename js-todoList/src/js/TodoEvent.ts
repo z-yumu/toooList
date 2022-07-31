@@ -1,5 +1,5 @@
 import TodoDom from "./TodoDom";
-import { getTodoList } from "./TodoService";
+import {getTodoList, removeTodoDec} from "./TodoService";
 import { ITodoData } from "./typing";
 
 
@@ -18,7 +18,7 @@ class TodoEvent extends TodoDom {
   private init(todoData:ITodoData[]){
     // console.log(this,'===========>this');
     this.todoData = todoData
-    // this.initList()
+    this.initList(todoData)
   }
 
   addTodo(todo: ITodoData): number  {
@@ -35,6 +35,7 @@ class TodoEvent extends TodoDom {
     return 1001
   }
 
+  @removeTodoDec
   removeTodo(target:HTMLElement,id:number):void {
     // filter不会改变原数组
     this.todoData = this.todoData.filter((item:ITodoData)=> item.id !== id  )

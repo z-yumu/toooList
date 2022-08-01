@@ -4,8 +4,8 @@ export interface ITodoData{
     completed:boolean
 }
 
-export interface  IResponse<T>{
+export interface  IResponse<T = unknown>{
     code:number,
     message:string,
-    data?:T[]
+    data?:T[] 
 }

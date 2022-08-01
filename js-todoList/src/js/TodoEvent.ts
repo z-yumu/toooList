@@ -13,8 +13,8 @@ class TodoEvent extends TodoDom {
 
   }
 
-  // 装饰器
-  @getTodoList
+  // 装饰器 装饰器传参
+  @getTodoList('http://localhost:9000/todoList')
   private init(todoData:ITodoData[]){
     // console.log(this,'===========>this');
     this.todoData = todoData

@@ -16,8 +16,8 @@ import TodoEvent from "./js/TodoEvent";
   const todoEvent: TodoEvent = new TodoEvent(todoData,todoList);
 
   const init = (): void => {
-    bindEvent();
-  };
+    bindEvent()
+  }
     // 事件代理
   function bindEvent(): void {
     // 第三个参数 false - 事件在冒泡阶段执行，默认是false
@@ -28,13 +28,13 @@ import TodoEvent from "./js/TodoEvent";
   function handleBtnClick(): void {
     const val:string = oInput.value.trim()
     if(val.length){
-      const res = todoEvent.addTodo(<ITodoData>{
+      todoEvent.addTodo(<ITodoData>{
         id: new Date().getTime(),
         content:val,
         completed: false,
       });
 
-    // 这里是引用，所以当TodoEvent的todoData改变时，这里的todoData也改变了
+    // 这里是引用,所以当TodoEvent的todoData改变时,这里的todoData也改变了
     // console.log(todoData);
 
       // if(res && res === 1001){
@@ -54,12 +54,12 @@ import TodoEvent from "./js/TodoEvent";
       case "BUTTON":
       // 删除
       todoEvent.removeTodo(tar,Number(tar?.dataset.id))
-        break;
+        break
       default:
-        break;
+        break
     }
   }
 
   init()
 
-})(document);
+})(document)

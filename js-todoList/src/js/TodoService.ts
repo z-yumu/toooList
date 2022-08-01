@@ -17,7 +17,7 @@ export function getTodoList(address:string):Function{
     return (target:any,methodName:string,description:PropertyDescriptor)=>{
         // 保存原有的init方法
         const _origin = description.value
-        // 重写(这里改变了this)
+        // 重写(这里改变了this) | 改变this的原因
         description.value = function(todoData:ITodoData[]){
             $.get(address).then((res:IResponse<ITodoData>)=>{
                 if(!res){
@@ -37,7 +37,6 @@ export function getTodoList(address:string):Function{
 export function  removeTodoDec(target:any,methodName:string,description:PropertyDescriptor):void{
     const _origin = description.value
     description.value = function (target:HTMLElement,id:number){
-        // IResponse
         $.post('http://localhost:9000/removeTodo',{ id },(res:IResponse)=>{
                 _origin.call(this,target,id)
                 if(res.code !== Code.Success){
@@ -52,7 +51,6 @@ export function  removeTodoDec(target:any,methodName:string,description:Property
 export function  toggleCompleteDec(target:any,methodName:string,description:PropertyDescriptor):void{
     const _origin = description.value
     description.value = function (target:HTMLElement,id:number){
-        // IResponse
         $.post('http://localhost:9000/toggleTodo',{ id },(res:IResponse)=>{
             _origin.call(this,target,id)
             if(res.code !== Code.Success){

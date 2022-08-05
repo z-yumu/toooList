@@ -7,14 +7,14 @@ import {Code} from "./enum";
 
 
 
-
-export function getTodoList(address:string):Function{
-    // target === TodoEvent.Prototype ===  t.__proto__ (new t = TodoEvent()) 
-    // console.log(target,'target')
-    // 这里是init(调用它的方法)
-    // console.log(methodName,'methodName')
-    // console.log(description,'description')
+// 返回值是一个函数怎么写 (target:any,methodName:string,description:PropertyDescriptor)=>void
+export function getTodoList(address:string):Function {
     return (target:any,methodName:string,description:PropertyDescriptor)=>{
+        // target === TodoEvent.Prototype ===  t.__proto__ (new t = TodoEvent()) 
+        // console.log(target,'target')
+        // 这里是init(调用它的方法)
+        // console.log(methodName,'methodName')
+        // console.log(description,'description');
         // 保存原有的init方法
         const _origin = description.value
         // 重写(这里改变了this) | 改变this的原因

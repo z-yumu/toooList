@@ -4,6 +4,10 @@ import { readFileSync,writeFileSync } from 'fs'
 import { resolve} from 'path'
 import {ITodoData} from "../src/js/typing";
 
+interface IFun<T = unknown>{
+    (data:T[]):T[]
+}
+
 export function readFile(path:string):string{
     // resolve方法将路径或路径片段的序列解析为绝对路径。 
     // __dirname(获取当前文件所属目录的绝对路径)
@@ -16,7 +20,8 @@ export function writeFile<T>(path:string,data:T):void{
     writeFileSync(resolve(__dirname,path),JSON.stringify(data))
 }
 
-export function fileOperation(path:string,fn?:any):void | string{
+// IFun<ITodoData>
+export function fileOperation(path:string,fn?:IFun<ITodoData>):void | string{
 
     let todoList:ITodoData[] = JSON.parse(readFile('todo.json') || '[]')
 
